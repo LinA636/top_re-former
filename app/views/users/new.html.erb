@@ -1,8 +1,11 @@
 <h1> Creating a new user </h1>
 
+<%# Manual form
 <form action="/users" method="post" accept-charset="UTF-8">
   <%= csrf_meta_tags %>
-  
+
+
+<%#
   <label for="user_name">Name</label>
   <input type="text" id="user_name" name="user[username]">
 
@@ -14,3 +17,27 @@
  
   <input type="submit" value="Create User">
 </form>
+%>
+
+<%# Form with #form_tag and #*_tag helpers %>
+<%= form_tag("/users", method: 'post') do%>
+
+  <div>
+    <%= label_tag 'username'%> 
+    <%= text_field_tag 'username'%>
+  </div>
+  
+  <div>
+    <%= label_tag 'email'%>
+    <%= email_field_tag 'email'%>
+  </div>
+  
+  <div>
+    <%= label_tag 'password'%>
+    <%= password_field_tag 'password'%>
+  </div>
+ 
+  <div>
+    <%= submit_tag 'Create User'%>
+  </div>
+<% end %>
