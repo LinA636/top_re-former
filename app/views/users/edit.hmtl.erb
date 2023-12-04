@@ -1,0 +1,39 @@
+<h1>Editing a User</h1>
+
+<%= form_with model: @user do |form|%>
+
+  <div>
+    <%= form.label :username, 'Your user name here' %>
+    <%= form.text_field :username, placeholder: 'superHero69' %>
+  
+    <% if @user.errors.include?(:username) %>
+      <p class="error-message">
+        <%= @user.errors.full_messages_for(:username).join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :email%>
+    <%= form.email_field :email, placeholder: 'example@example.com' %>
+    <% if @user.errors.include?(:email) %>
+      <p class="error-message">
+        <%= @user.errors.full_messages_for(:email).join(', ') %>
+      </p>
+    <% end %>
+  </div>
+
+   <div>
+    <%= form.label :password%>
+    <%= form.password_field :password%>
+    <% if @user.errors.include?(:password) %>
+      <p class="error-message">
+        <%= @user.errors.full_messages_for(:password).join(', ') %>
+      </p>
+    <% end %>
+  </div>
+  
+  <div>
+    <%= form.submit "Update user"%>
+  </div>  
+<% end %>
